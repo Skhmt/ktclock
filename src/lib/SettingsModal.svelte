@@ -44,10 +44,10 @@
 	}
 
 	function saveTime() {
-		console.log(totalTimeMinutes);
-		
-		total_time.set(totalTimeMinutes*60*1000);
-		resetClock();
+		if (!isNaN(totalTimeMinutes) && totalTimeMinutes > 0) {
+			total_time.set(totalTimeMinutes*60*1000);
+			resetClock();
+		}
 	}
 
 	function saveModTime() {
