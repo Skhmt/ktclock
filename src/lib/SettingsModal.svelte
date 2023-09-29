@@ -5,12 +5,9 @@
 	import { showSettings } from './stores.js';
 	import { 
 		total_time,
-		p2_ellapsed_time, 
-		p2_last_time, 
 		p2_isRunning, 
-		p1_ellapsed_time,
-		p1_last_time,
-		p1_isRunning 
+		p1_isRunning,
+		reset,
 	} from './stores.js';
 
 	let isVisible;
@@ -36,17 +33,15 @@
 	}
 
 	function resetClock() {
-		p1_ellapsed_time.set(0);
-		p2_ellapsed_time.set(0);
-		p1_isRunning.set(false);
-		p2_isRunning.set(false);
+		reset();
 		window?.navigator?.vibrate?.(100);
 	}
 
 	function saveTime() {
 		if (!isNaN(totalTimeMinutes) && totalTimeMinutes > 0) {
 			total_time.set(totalTimeMinutes*60*1000);
-			resetClock();
+			reset();
+			window?.navigator?.vibrate?.(100);
 		}
 	}
 
@@ -71,10 +66,11 @@
 		</div>
 
 		<div class="modalContent">
-			<strong>Reset Clock</strong>
+			<strong>Reset</strong>
+			(resets time and scores)
 		</div>
 		<div class="modalControl">
-			<button on:click={resetClock} title="Reset Clock" class="modalButton">
+			<button on:click={resetClock} title="Reset" class="modalButton">
 				<Fa icon={faRotateRight} />
 			</button>
 		</div>
