@@ -8,7 +8,6 @@ export default defineConfig({
 		svelte(),
 		VitePWA({
 			includeAssets: [
-				'ktclock.png',
 				'ktclock180.png',
 				'ktclock192.png',
 				'ktclock512.png'
