@@ -8,7 +8,10 @@ export default defineConfig({
 		svelte(),
 		VitePWA({
 			includeAssets: [
-				'ktcalc.png'
+				'ktclock.png',
+				'ktclock180.png',
+				'ktclock192.png',
+				'ktclock512.png'
 			],
 			manifest: {
 				name: 'Kill Team Clock',
