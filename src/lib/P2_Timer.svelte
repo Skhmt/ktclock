@@ -58,7 +58,7 @@
 		if (isRunning || (!isRunning && !otherIsRunning)) { // stop and start p2
 			p2_isRunning.set(false);
 			p1_isRunning.set(true);
-			if (window.navigator.vibrate) window.navigator.vibrate(100);
+			window?.navigator?.vibrate?.(100);
 		}
 	}
 

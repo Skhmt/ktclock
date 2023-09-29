@@ -5,11 +5,11 @@
 
 	const increment = () => {
 		turn.update(x => x + 1);
-		if (window.navigator.vibrate) window.navigator.vibrate(100);
+		window?.navigator?.vibrate?.(100);
 	};
     const decrement = () => {
 		turn.update(x => x > 0 ? x - 1 : 0);
-		if (window.navigator.vibrate) window.navigator.vibrate(100);
+		window?.navigator?.vibrate?.(100);
     };
 
 	let count;

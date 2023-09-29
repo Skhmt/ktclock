@@ -6,7 +6,7 @@
 
 	function openSettings() {
 		showSettings.set(true);
-		if (window.navigator.vibrate) window.navigator.vibrate(100);
+		window?.navigator?.vibrate?.(100);
 	}
 </script>
 
