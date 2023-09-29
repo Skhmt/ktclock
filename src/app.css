@@ -1,3 +1,9 @@
+:root {
+	/* disable zooming in ios */
+	touch-action: pan-x pan-y;
+	height: 100% 
+}
+
 body {
 	margin: 0;
 	padding: 0;
