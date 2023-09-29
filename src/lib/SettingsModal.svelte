@@ -50,6 +50,10 @@
 		}
 	}
 
+	function timeMod(mod) {
+		totalTimeMinutes += mod;
+	}
+
 	function saveModTime() {
 
 	}
@@ -79,7 +83,14 @@
 		<div class="modalContent">
 			<strong>Minutes Per Player</strong>
 			(saving resets the clock)
-			<input type="text" bind:value={totalTimeMinutes} />
+			<div>
+				<button on:click={_=>{timeMod(-5)}}> -5 </button>
+				<button on:click={_=>{timeMod(-1)}}> -1 </button>
+				<strong>{totalTimeMinutes} minutes</strong>
+				<button on:click={_=>{timeMod(1)}}> +1 </button>
+				<button on:click={_=>{timeMod(5)}}> +5 </button>
+			</div>
+			<!-- <input type="text" bind:value={totalTimeMinutes} /> -->
 		</div>
 		<div class="modalControl">
 			<button on:click={saveTime} title="Set Total Time" class="modalButton">
