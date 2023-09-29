@@ -72,7 +72,6 @@
 
 		<div class="modalContent">
 			<strong>Reset Clock</strong>
-
 		</div>
 		<div class="modalControl">
 			<button on:click={resetClock} title="Reset Clock" class="modalButton">
@@ -99,12 +98,18 @@
 		</div>
 
 		<div class="modalContent">
-			Modify Time
+			<strong>Modify Time</strong>
 		</div>
 		<div class="modalControl">
 			<button on:click={saveModTime} title="Set Modified Time" class="modalButton">
 				<Fa icon={faFloppyDisk} />
 			</button>
+		</div>
+
+
+		<div class="modalContent">
+			<h1>About</h1>
+			<p>github: <a href="https://github.com/Skhmt/ktclock" target="_blank">github.com/Skhmt/ktclock</a></p>
 		</div>
 	</div>
 </div>
