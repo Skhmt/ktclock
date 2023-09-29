@@ -1,28 +1,30 @@
 <script>
     import NoSleep from 'nosleep.js';
 	import Fa from 'svelte-fa';
-	import { faMoon } from '@fortawesome/free-solid-svg-icons/index.js';
-	import {faMoon as faMoonReg} from '@fortawesome/free-regular-svg-icons/index.js';
+	import { faMaximize, faMinimize } from '@fortawesome/free-solid-svg-icons/index.js';
 
 	const noSleep = new NoSleep();
 
-	let isNoSleep = false;
+	let maximize = true;
 
 	const toggleNoSleep = () => {
-		isNoSleep = !isNoSleep;
-		if (isNoSleep) {
+		if (!document.fullscreenElement) {
+			document.documentElement.requestFullscreen();
 			noSleep.enable();
+			maximize = false;
 		}
-		else {
+		else if (document.exitFullscreen) {
+			document.exitFullscreen();
 			noSleep.disable();
+			maximize = true;
 		}
 	};
 </script>
 
-<button on:click={toggleNoSleep} title="Toggle No Sleep">
-	{#if isNoSleep}
-	<Fa icon={faMoon} />
+<button on:click={toggleNoSleep} title="Full Screen">
+	{#if maximize}
+	<Fa icon={faMaximize} />
 	{:else}
-	<Fa icon={faMoonReg} />
+	<Fa icon={faMinimize} />
 	{/if}
 </button>
