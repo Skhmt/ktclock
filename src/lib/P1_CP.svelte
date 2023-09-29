@@ -23,7 +23,7 @@
 	<Fa icon={faMinus} />
 </button>
 <div class="data">
-	<span>{count} CP</span>
+	<span><strong>{count} CP</strong></span>
 </div>
 <button on:click={increment} title="Increment CP">
 	<Fa icon={faPlus} />

@@ -24,7 +24,7 @@
 </button>
 
 <div class="data flip">
-	<span>{count} CP</span>
+	<span><strong>{count} CP</strong></span>
 </div>
 <button on:click={decrement} title="Decrement CP">
 	<Fa icon={faMinus} />

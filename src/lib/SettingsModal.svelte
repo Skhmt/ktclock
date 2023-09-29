@@ -24,9 +24,10 @@
 
 	const unsubscribeSettings = showSettings.subscribe(value => {
 		isVisible = value;
-		// if (isVisible) {
-		// 	totalTimeMinutes = totalTime / (60*1000);
-		// }
+		if (isVisible) {
+			p1_isRunning.set(false);
+			p2_isRunning.set(false);
+		}
 	});
 
 	function closeSettings() {
@@ -50,7 +51,7 @@
 	}
 
 	function saveModTime() {
-		
+
 	}
 
 	$: visibility = isVisible ? 'display: block;' : 'display: none;';
@@ -66,7 +67,8 @@
 		</div>
 
 		<div class="modalContent">
-			Reset Clock
+			<strong>Reset Clock</strong>
+
 		</div>
 		<div class="modalControl">
 			<button on:click={resetClock} title="Reset Clock" class="modalButton">
@@ -75,8 +77,9 @@
 		</div>
 
 		<div class="modalContent">
-			Minutes Per Player (this resets the clock)
-			<input type="text" bind:value={totalTimeMinutes} size="10" />
+			<strong>Minutes Per Player</strong>
+			(saving resets the clock)
+			<input type="text" bind:value={totalTimeMinutes} />
 		</div>
 		<div class="modalControl">
 			<button on:click={saveTime} title="Set Total Time" class="modalButton">

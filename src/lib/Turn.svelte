@@ -23,7 +23,7 @@
 	<Fa icon={faMinus} />
 </button>
 <div class="data">
-	<span>Turn {count}</span>
+	<span><strong>Turn {count}</strong></span>
 </div>
 <button on:click={increment} title="Increment Turn">
 	<Fa icon={faPlus} />
