@@ -6,7 +6,7 @@
 	const pause = () => {
 		p1_isRunning.set(false);
 		p2_isRunning.set(false);
-		window.navigator.vibrate(200);
+		if (window.navigator.vibrate) window.navigator.vibrate(100);
 	};
 </script>
 

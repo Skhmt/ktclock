@@ -21,7 +21,7 @@
 
 	function closeSettings() {
 		showSettings.set(false);
-		window.navigator.vibrate(200);
+		if (window.navigator.vibrate) window.navigator.vibrate(100);
 	}
 
 	function resetClock() {
@@ -29,7 +29,7 @@
 		p2_ellapsed_time.set(0);
 		p1_isRunning.set(false);
 		p2_isRunning.set(false);
-		window.navigator.vibrate(200);
+		if (window.navigator.vibrate) window.navigator.vibrate(100);
 	}
 
 	$: visibility = isVisible ? 'display: block;' : 'display: none;';

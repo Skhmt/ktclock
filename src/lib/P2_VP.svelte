@@ -5,11 +5,11 @@
 
 	const increment = () => {
 		p2_vp.update(x => x + 1);
-		window.navigator.vibrate(200);
+		if (window.navigator.vibrate) window.navigator.vibrate(100);
 	};
     const decrement = () => {
 		p2_vp.update(x => x > 0 ? x - 1 : 0);
-		window.navigator.vibrate(200);
+		if (window.navigator.vibrate) window.navigator.vibrate(100);
     };
 
 	let count;

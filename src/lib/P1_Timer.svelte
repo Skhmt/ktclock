@@ -54,9 +54,9 @@
 
 	function switchTimer() {
 		if (isRunning || (!isRunning && !otherIsRunning)) { // stop and start p2
-			window.navigator.vibrate(200);
 			p1_isRunning.set(false);
 			p2_isRunning.set(true);
+			if (window.navigator.vibrate) window.navigator.vibrate(100);
 		}
 	}
 

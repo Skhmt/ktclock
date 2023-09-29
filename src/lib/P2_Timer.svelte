@@ -56,9 +56,9 @@
 	// else, do nothing unless both are stopped
 	function switchTimer() {
 		if (isRunning || (!isRunning && !otherIsRunning)) { // stop and start p2
-			window.navigator.vibrate(200);
 			p2_isRunning.set(false);
 			p1_isRunning.set(true);
+			if (window.navigator.vibrate) window.navigator.vibrate(100);
 		}
 	}
 
