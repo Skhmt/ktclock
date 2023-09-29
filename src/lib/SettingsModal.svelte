@@ -1,6 +1,6 @@
 <script>
 	import Fa from 'svelte-fa';
-	import { faGear, faXmark, faRotateRight } from '@fortawesome/free-solid-svg-icons/index.js';
+	import { faFloppyDisk, faXmark, faRotateRight } from '@fortawesome/free-solid-svg-icons/index.js';
 
 	import { showSettings } from './stores.js';
 	import { 
@@ -14,9 +14,19 @@
 	} from './stores.js';
 
 	let isVisible;
+	let totalTime;
+	let totalTimeMinutes;
+
+	const unsubscribeTotalTime = total_time.subscribe(value => {
+		totalTime = value;
+		totalTimeMinutes = totalTime / (60*1000);
+	})
 
 	const unsubscribeSettings = showSettings.subscribe(value => {
 		isVisible = value;
+		// if (isVisible) {
+		// 	totalTimeMinutes = totalTime / (60*1000);
+		// }
 	});
 
 	function closeSettings() {
@@ -32,18 +42,27 @@
 		window?.navigator?.vibrate?.(100);
 	}
 
+	function saveTime() {
+		console.log(totalTimeMinutes);
+		
+		total_time.set(totalTimeMinutes*60*1000);
+		resetClock();
+	}
+
+	function saveModTime() {
+		
+	}
+
 	$: visibility = isVisible ? 'display: block;' : 'display: none;';
 </script>
 
 <div style="{visibility}" class="modal">
+	<button on:click={closeSettings} title="Close Settings" class="modalButton xButton">
+		<Fa icon={faXmark} />
+	</button>
 	<div class="modalGrid">
 		<div class="modalContent" style="grid-area: 1 / 1 / 2 / 3;">
 			<h1>Settings</h1>
-		</div>
-		<div style="position: absolute; right: 0px; top: 0px;">
-			<button on:click={closeSettings} title="Close Settings" class="modalButton">
-				<Fa icon={faXmark} />
-			</button>
 		</div>
 
 		<div class="modalContent">
@@ -56,17 +75,22 @@
 		</div>
 
 		<div class="modalContent">
-			Change Total Time
+			Minutes Per Player (this resets the clock)
+			<input type="text" bind:value={totalTimeMinutes} size="10" />
 		</div>
 		<div class="modalControl">
-			f
+			<button on:click={saveTime} title="Set Total Time" class="modalButton">
+				<Fa icon={faFloppyDisk} />
+			</button>
 		</div>
 
 		<div class="modalContent">
 			Modify Time
 		</div>
 		<div class="modalControl">
-			f
+			<button on:click={saveModTime} title="Set Modified Time" class="modalButton">
+				<Fa icon={faFloppyDisk} />
+			</button>
 		</div>
 	</div>
 </div>

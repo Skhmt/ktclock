@@ -12,6 +12,8 @@
 
 	const unsubscribeTotalTime = total_time.subscribe(value => {
 		totalTime = value;
+
+		updateTimeLeft();
 	});
 
 	const unsubscribeEllapsedTime = p2_ellapsed_time.subscribe(value => {
